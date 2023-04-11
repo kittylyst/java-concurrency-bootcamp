@@ -10,45 +10,17 @@
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <!-- Library versions -->
-        <junit.version>4.13.1</junit.version>
-        <javaee-api.version>7.0</javaee-api.version>
-        <jmh.version>1.13</jmh.version>
-        <web3j.version>3.1.1</web3j.version>
-        <hdrhist.version>2.1.9</hdrhist.version>
+        <junit.version>5.9.2</junit.version>
     </properties>
     
     <dependencies>
-        <!-- Testing -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>${javaee-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>org.hdrhistogram</groupId>
-            <artifactId>HdrHistogram</artifactId>
-            <version>${hdrhist.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 </project>
