@@ -1,7 +1,6 @@
 package oreilly.counters;
 
 import oreilly.counters.wk1.UnprotectedCounter;
-import oreilly.counters.wk2.AtomicVarHandleCounter;
 
 /**
  * @author ben

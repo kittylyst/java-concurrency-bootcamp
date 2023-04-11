@@ -4,7 +4,7 @@ import oreilly.counters.Counter;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 
-public final class AtomicVarHandleCounter implements Counter {
+public final class AtomicCounterVarHandle implements Counter {
 
     private static final VarHandle vh;
 
@@ -13,7 +13,7 @@ public final class AtomicVarHandleCounter implements Counter {
     static {
         try {
             MethodHandles.Lookup l = MethodHandles.lookup();
-            vh = l.findVarHandle(AtomicVarHandleCounter.class, "value", int.class);
+            vh = l.findVarHandle(AtomicCounterVarHandle.class, "value", int.class);
         } catch (Exception ex) { throw new Error(ex); }
     }
 
