@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>20</maven.compiler.source>
-        <maven.compiler.target>20</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <!-- Library versions -->
         <junit.version>5.9.2</junit.version>
     </properties>
@@ -21,6 +21,24 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-
     </dependencies>
+
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+            <compilerVersion>19</compilerVersion>
+            <release>19</release>
+            <compilerArgs>
+                --enable-preview
+            </compilerArgs>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
 </project>
