@@ -1,7 +1,5 @@
 package oreilly.vthread;
 
-import com.sun.net.httpserver.Request;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,7 +24,7 @@ public class ExampleVTExecutor {
     static void handle(URL... urls) {
         Future<String>[] fs = new Future[urls.length];
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-            for (var i=0; i < urls.length; i = i + 1) {
+            for (var i = 0; i < urls.length; i = i + 1) {
                 var url = urls[i];
                 fs[i] = executor.submit(() -> fetchURL(url));
             }
