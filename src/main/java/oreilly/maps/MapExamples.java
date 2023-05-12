@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MapExamples {
     public static void main(String[] args) {
-        Map<String, String> map = new ConcurrentHashMap<>();
-        int SIZE = 10_000_000;
+        Map<String, String> map = new SimpleDict();
+        int SIZE = 100;
 
         Runnable r1 = () -> {
           for (int i = 0; i < SIZE; i = i + 1) {
