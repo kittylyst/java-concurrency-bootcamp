@@ -1,4 +1,4 @@
-package oreilly.counters.wk2;
+package oreilly.counters.wk1;
 
 import oreilly.counters.Counter;
 
