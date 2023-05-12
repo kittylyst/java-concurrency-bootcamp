@@ -23,6 +23,17 @@ public class JUCMain {
             }
         };
 
+        Thread t1 = new Thread(source);
+        Thread t2 = new Thread(sink);
+
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 package oreilly.maps;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapExamples {
     public static void main(String[] args) {
