@@ -14,7 +14,9 @@ public class NTRMain {
         var processor = new Thread(ntr);
         processor.start();
         try {
-//            Thread.sleep(1);
+            while (bq.size() > 0) {
+                Thread.sleep(1);
+            }
             ntr.close();
             processor.join();
         } catch (InterruptedException e) {

@@ -13,10 +13,12 @@ public class FailToFinish implements Closeable, Runnable {
 
     @Override
     public void run() {
+        var i = 0;
         while (!shutdown) {
-            // do some work....
+            System.out.println("Looping... "+ i);
+            i += 1;
             try {
-                Thread.sleep(50);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 shutdown = true;
             }
