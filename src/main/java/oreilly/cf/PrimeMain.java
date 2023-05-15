@@ -16,12 +16,12 @@ public class PrimeMain {
                 Thread.sleep(500);
             }
             theNum = numF.get();
+            System.out.println("Fetched: " + theNum);
         } catch (ExecutionException ee ) {
             // ..
         } catch (InterruptedException ie ) {
             // ..
         }
-        System.out.println("Fetched " + theNum);
     }
 
 }

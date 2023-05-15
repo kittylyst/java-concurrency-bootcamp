@@ -13,6 +13,6 @@ public class RefactoredMain {
             Runnable r = () -> em.persist(item);
             executor.submit(r);
         }
-        executor.shutdownNow();
+        executor.shutdown();
     }
 }

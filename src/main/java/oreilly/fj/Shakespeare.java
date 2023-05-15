@@ -14,7 +14,9 @@ public class Shakespeare {
         System.out.println("Total lines: "+ lines.size());
 
         var hasRose = Pattern.compile("rose", Pattern.CASE_INSENSITIVE).asPredicate();
-        var total = lines.parallelStream().filter(hasRose).count();
+        var total = lines.parallelStream()
+                        .filter(hasRose)
+                        .count();
         System.out.println("Lines that talk about roses: "+ total);
     }
 
