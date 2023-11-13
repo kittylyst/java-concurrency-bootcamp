@@ -1,13 +1,9 @@
 package oreilly.vthread;
 
-import jdk.incubator.concurrent.StructuredTaskScope;
-
-
-import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.function.Supplier;
+import java.util.concurrent.StructuredTaskScope;
 
 public class ExampleStructuredCon {
 
@@ -24,10 +20,10 @@ public class ExampleStructuredCon {
     private static StockTip makeStockTip(String s) {
         try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
             Callable<Double> getSentiment = () -> getSentiment(s);
-            Future<Double> fSentiment = scope.fork(getSentiment);
+            StructuredTaskScope.Subtask<Double> fSentiment = scope.fork(getSentiment);
 
             Callable<Double> getDelta = () -> getDelta24(s);
-            Future<Double> fDelta = scope.fork(getDelta);
+            StructuredTaskScope.Subtask<Double> fDelta = scope.fork(getDelta);
 
             scope.join();
             scope.throwIfFailed();

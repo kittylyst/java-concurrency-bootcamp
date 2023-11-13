@@ -1,6 +1,5 @@
 package oreilly.vthread;
 
-import jdk.incubator.concurrent.ScopedValue;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
