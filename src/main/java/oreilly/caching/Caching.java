@@ -6,6 +6,7 @@ public class Caching {
     private final int[] testData = new int[ARR_SIZE];
 
     private void run() {
+        // Ignore this - warmup
         for (int i = 0; i < 10_000; i += 1) {
             touchEveryLine();
             touchEveryItem();
@@ -28,8 +29,8 @@ public class Caching {
             testData[i] += 1;
     }
 
-    private void touchEveryLine() {
-        for (int i = 0; i < testData.length; i += 16)
+    private void touchEveryLine() { // 1/8th of the work
+        for (int i = 0; i < testData.length; i += 8)
             testData[i] += 1;
     }
 

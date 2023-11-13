@@ -24,8 +24,8 @@ public class SimpleDict implements Map<String, String> {
         for (Node e = table[indexFor(hash, table.length)];
              e != null;
              e = e.next) {
-            Object k;
-            if (e.hash == hash && ((k = e.key) == key || key.equals(k)))
+            Object k  = e.key;
+            if (e.hash == hash && (k == key || key.equals(k)))
                 return e.value;
         }
         return null;
@@ -39,16 +39,17 @@ public class SimpleDict implements Map<String, String> {
         int hash = hash(key.hashCode());
         int i = indexFor(hash, table.length);
         for (Node e = table[i]; e != null; e = e.next) {
-            Object k;
-            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+            Object k = e.key;
+            if (e.hash == hash && (k == key || key.equals(k))) {
+                // Update value
                 String oldValue = e.value;
                 e.value = value;
 
-                size = size + 1;
                 return oldValue;
             }
         }
 
+        // Add new entry
         Node e = table[i];
         table[i] = new Node(hash, key, value, e);
 

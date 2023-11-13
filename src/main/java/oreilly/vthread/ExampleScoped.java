@@ -1,8 +1,5 @@
 package oreilly.vthread;
 
-import jdk.incubator.concurrent.ScopedValue;
-import jdk.incubator.concurrent.StructuredTaskScope;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
