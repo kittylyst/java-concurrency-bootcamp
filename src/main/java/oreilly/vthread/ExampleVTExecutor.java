@@ -48,10 +48,9 @@ public class ExampleVTExecutor {
         try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
             List<StructuredTaskScope.Subtask<T>> handles =
                     tasks.stream().map(scope::fork).toList();
-                                scope.join()
-                                        .throwIfFailed();  // Propagate exception if any subtask fails
+                    scope.join().throwIfFailed();  // Propagate exception if any subtask fails
 
-                                // Here, all tasks have succeeded, so compose their results
+            // Here, all tasks have succeeded, so compose their results
             return handles.stream().map(StructuredTaskScope.Subtask::get).toList();
         }
     }
