@@ -10,7 +10,7 @@ public final class SynchronizedCounter implements Counter {
 
     private int i = 0;
 
-    public int increment() {
+    public int increment() { // synchronized
         synchronized (this) {
             i = i + 1;
         }

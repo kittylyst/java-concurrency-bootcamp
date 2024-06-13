@@ -17,6 +17,7 @@ public class CounterMain {
             }
         };
 
+        // Look in the docs dir for the corresponding bytecode
         Thread tA = new Thread(r);
         Thread tB = new Thread(r);
         long start = System.currentTimeMillis();
