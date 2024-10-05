@@ -1,14 +1,11 @@
 package oreilly.maps;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class MapExamples {
     public static void main(String[] args) {
-        Map<String, String> map = Collections.synchronizedMap(new HashMap<>());
-        int SIZE = 10_000_000;
+        Map<String, String> map = new SimpleDict();
+        int SIZE = 10_000;
 
         Runnable r1 = () -> {
           for (int i = 0; i < SIZE; i = i + 1) {
