@@ -10,6 +10,7 @@ public class ClassicQueue implements SimpleBoundedQueue {
         while (count == items.length) {
             System.out.println("Queue full");
             wait();
+            // wake up here after reacquired lock
         }
 
         items[putptr] = x;
@@ -17,7 +18,7 @@ public class ClassicQueue implements SimpleBoundedQueue {
         count += 1;
 
         // signal other threads that they can try for the lock again
-        notify();
+        notifyAll();
     }
 
     public synchronized Object take() throws InterruptedException {
@@ -32,7 +33,7 @@ public class ClassicQueue implements SimpleBoundedQueue {
         count -= 1;
 
         // Signal other threads that they can stop waiting & try for the lock
-        notify();
+        notifyAll();
         return x;
     }
 }

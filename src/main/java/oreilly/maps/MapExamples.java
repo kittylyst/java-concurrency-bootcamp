@@ -5,7 +5,7 @@ import java.util.Map;
 public class MapExamples {
     public static void main(String[] args) {
         Map<String, String> map = new SimpleDict();
-        int SIZE = 100;
+        int SIZE = 10_000;
 
         Runnable r1 = () -> {
           for (int i = 0; i < SIZE; i = i + 1) {

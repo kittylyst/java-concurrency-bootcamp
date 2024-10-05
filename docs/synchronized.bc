@@ -1,10 +1,10 @@
        A0: aload_0
        A1: aload_0
        XXXXXXXXXXXXXXX  monitorenter
-       A2: getfield      #2                  // Field i:I  *** READ 17
-       A5: iconst_1
-       A6: iadd
-       A7: dup_x1
+       A2: getfield      #2                  // Field i:I  *** READ 17   A:[17, this]
+       A5: iconst_1      A:[1, 17, this]
+       A6: iadd          A:[18, this]
+       A7: dup_x1        A:[18, this, 18]
        /////////////////////////////////////////////  Context Switch
 
               B0: aload_0
