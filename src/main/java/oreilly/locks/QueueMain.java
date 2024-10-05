@@ -1,9 +1,10 @@
 package oreilly.locks;
 
-public class JUCMain {
+public class QueueMain {
 
     public static void main(String[] args) {
-        SimpleBoundedQueue q = new JUCQueue();
+        SimpleBoundedQueue q = new ClassicQueue();
+//        SimpleBoundedQueue q = new JUCQueue();
         Runnable source = () -> {
             for (var i = 0; i < 5000; i += 1) {
                 try {

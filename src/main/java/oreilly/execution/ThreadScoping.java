@@ -1,6 +1,6 @@
-package oreilly;
+package oreilly.execution;
 
-public class ScratchThread {
+public class ThreadScoping {
 
     public static void main(String[] args) throws InterruptedException {
         startThread();

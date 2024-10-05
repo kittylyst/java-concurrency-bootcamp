@@ -21,10 +21,10 @@ public class ExecutorExamples {
             System.out.println("Finished on "+ name);
         };
 
-        ExecutorService ex = new ThreadPoolExecutor(3, 60,
-                10L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>());
-//        Executors.newCachedThreadPool();
+        ExecutorService ex = Executors.newFixedThreadPool(3);
+//        ExecutorService ex = new ThreadPoolExecutor(3, 60,
+//                10L, TimeUnit.SECONDS,
+//                new SynchronousQueue<>());
         ex.execute(r);
         ex.execute(r);
         ex.execute(r);
