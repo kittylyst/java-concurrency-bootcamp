@@ -9,17 +9,22 @@ public class CounterMain {
     public static final int REPS = 10_000_000;
 
     public static void main(String[] args) throws InterruptedException {
-        final var c = new UnprotectedCounter();
+        final var c = new HalfSynchronizedCounter();
 
-        Runnable r = () -> {
+        Runnable rA = () -> {
             for (int i = 0; i < REPS; i = i + 1) {
                 c.increment();
             }
         };
+        Runnable rB = () -> {
+            for (int i = 0; i < REPS; i = i + 1) {
+                c.increment(true);
+            }
+        };
 
         // Look in the docs dir for the corresponding bytecode
-        Thread tA = new Thread(r);
-        Thread tB = new Thread(r);
+        Thread tA = new Thread(rA);
+        Thread tB = new Thread(rB);
         long start = System.currentTimeMillis();
         tA.start();
         tB.start();
