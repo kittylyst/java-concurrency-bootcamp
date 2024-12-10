@@ -15,5 +15,8 @@ public class AsynchPrimeFinder {
             nthF.complete(num);
         } ).start();
         return nthF;
+
+//        Supplier<Long> c = () -> Eratosthenes.findPrime(n);
+//        return CompletableFuture.supplyAsync(c);
     }
 }
