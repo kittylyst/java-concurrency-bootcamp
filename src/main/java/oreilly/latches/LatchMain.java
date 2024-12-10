@@ -15,12 +15,12 @@ public class LatchMain {
             Thread.yield();
         }
 
-        latch.await();
-        System.out.println("Joining");
+        latch.await(); // All tN countdown() calls complete before this completes
+        System.out.println(System.currentTimeMillis() +": "+ "Joining");
         for (var i=0; i < THREAD_COUNT; i += 1) {
             ts[i].join();
         }
-        System.out.println("Completed");
+        System.out.println(System.currentTimeMillis() +": "+ "Completed");
     }
 
 }
