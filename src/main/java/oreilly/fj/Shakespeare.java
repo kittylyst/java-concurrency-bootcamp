@@ -14,10 +14,12 @@ public class Shakespeare {
         System.out.println("Total lines: "+ lines.size());
 
         var hasRose = Pattern.compile("rose", Pattern.CASE_INSENSITIVE).asPredicate();
+        var start = System.nanoTime();
         var total = lines.parallelStream()
                         .filter(hasRose)
                         .count();
-        System.out.println("Lines that talk about roses: "+ total);
+        var end = System.nanoTime();
+        System.out.println("Lines that talk about roses: "+ total +" ; "+ (end - start));
     }
 
     private static List<String> getLines() {
