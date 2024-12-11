@@ -8,13 +8,13 @@ public class Caching {
     private void run() {
         // Ignore this - warmup
         for (int i = 0; i < 10_000; i += 1) {
-            touchEveryLine();
+            touchEveryNth();
             touchEveryItem();
         }
         System.out.println("Line     Item");
         for (int i = 0; i < 100; i += 1) {
             long t0 = System.nanoTime();
-            touchEveryLine();
+            touchEveryNth();
             long t1 = System.nanoTime();
             touchEveryItem();
             long t2 = System.nanoTime();
@@ -29,7 +29,7 @@ public class Caching {
             testData[i] += 1;
     }
 
-    private void touchEveryLine() { // 1/8th of the work
+    private void touchEveryNth() { // 1/8th of the increments (not 1/8 of the work)
         for (int i = 0; i < testData.length; i += 8)
             testData[i] += 1;
     }
