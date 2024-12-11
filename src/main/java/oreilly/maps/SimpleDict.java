@@ -3,7 +3,7 @@ package oreilly.maps;
 import java.util.*;
 
 public class SimpleDict implements Map<String, String> {
-    private Node[] table = new Node[8];
+    private final Node[] table = new Node[8];
     private int size;
 
     @Override
@@ -50,8 +50,8 @@ public class SimpleDict implements Map<String, String> {
         }
 
         // Add new entry
-        Node e = table[i];
-        table[i] = new Node(hash, key, value, e);
+        Node oldHead = table[i];
+        table[i] = new Node(hash, key, value, oldHead);
 
         size = size + 1;
         return null;
@@ -168,16 +168,17 @@ public class SimpleDict implements Map<String, String> {
 
         public final String getKey()        { return key; }
         public final String getValue()      { return value; }
-        public final String toString() { return key + "=" + value; }
-
-        public final int hashCode() {
-            return Objects.hashCode(key) ^ Objects.hashCode(value);
-        }
 
         public final String setValue(String newValue) {
             String oldValue = value;
             value = newValue;
             return oldValue;
+        }
+
+        public final String toString() { return key + "=" + value; }
+
+        public final int hashCode() {
+            return Objects.hashCode(key) ^ Objects.hashCode(value);
         }
 
         public final boolean equals(Object o) {
