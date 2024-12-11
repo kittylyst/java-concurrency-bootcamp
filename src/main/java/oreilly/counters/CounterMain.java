@@ -11,20 +11,15 @@ public class CounterMain {
     public static void main(String[] args) throws InterruptedException {
         final var c = new HalfSynchronizedCounter();
 
-        Runnable rA = () -> {
+        Runnable r = () -> {
             for (int i = 0; i < REPS; i = i + 1) {
                 c.increment();
             }
         };
-        Runnable rB = () -> {
-            for (int i = 0; i < REPS; i = i + 1) {
-                c.increment(true);
-            }
-        };
 
         // Look in the docs dir for the corresponding bytecode
-        Thread tA = new Thread(rA);
-        Thread tB = new Thread(rB);
+        Thread tA = new Thread(r);
+        Thread tB = new Thread(r);
         long start = System.currentTimeMillis();
         tA.start();
         tB.start();
@@ -32,7 +27,7 @@ public class CounterMain {
         tB.join();
         long fin = System.currentTimeMillis();
         int lost = 2 * REPS - c.get();
-        System.out.println("Lost Updates: " + lost);
+        System.out.println("Lost Updates: " + lost); // Only concurrently-safe iff lost == 0
         System.out.println("Elapsed: " + (fin - start));
     }
 
