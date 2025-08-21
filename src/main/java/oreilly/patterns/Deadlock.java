@@ -5,11 +5,6 @@ public class Deadlock {
         Object a = new Object();
         Object b = new Object();
 
-        // It works with immutable strings too!
-        //        var base = "cat";
-//        Object a = base + "s";
-//        Object b = base + "ologue";
-
         Thread t1 = new Thread(() -> {
                 synchronized(a) { // Lightweight lock on a
                     try {
@@ -20,7 +15,7 @@ public class Deadlock {
 
         Thread t2 = new Thread(() ->{
                 synchronized(b) { // Lightweight lock on b
-                    synchronized(a) { compute(); }
+                    synchronized(a) { compute(); } // Forces a to transition to heavy lock
                 }});
 
         t1.start();
