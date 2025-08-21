@@ -7,7 +7,7 @@ public class AsynchPrimeFinder {
 
     private AsynchPrimeFinder() {}
 
-    public static Future<Long> getNthPrime(int n) {
+    public static CompletableFuture<Long> getNthPrime(int n) {
         var nthF = new CompletableFuture<Long>();
 
         new Thread( () -> {

@@ -6,6 +6,7 @@ import java.net.Socket;
 
 public class WebServerScoped {
 
+    // Dynamic or implicit scope
     private static final ScopedValue<Socket> socketSV = ScopedValue.newInstance();
 
     void serve(ServerSocket serverSocket) throws IOException {

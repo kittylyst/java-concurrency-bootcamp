@@ -5,6 +5,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.StructuredTaskScope;
 
+import static java.util.concurrent.StructuredTaskScope.Joiner.allSuccessfulOrThrow;
+
 public class ExampleStructuredCon {
 
     // A triple consisting of a symbol, its social media sentiment score (-1.0 to +1.0)
@@ -18,7 +20,8 @@ public class ExampleStructuredCon {
     }
 
     private static StockTip makeStockTip(String s) {
-        try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+        // All forked subtasks must succeed
+        try (var scope = StructuredTaskScope.open(allSuccessfulOrThrow())) {
             Callable<Double> getSentiment = () -> getSentiment(s);
             StructuredTaskScope.Subtask<Double> fSentiment = scope.fork(getSentiment);
 
@@ -26,10 +29,9 @@ public class ExampleStructuredCon {
             StructuredTaskScope.Subtask<Double> fDelta = scope.fork(getDelta);
 
             scope.join();
-            scope.throwIfFailed();
 
             return new StockTip(s, fSentiment.get(), fDelta.get());
-        } catch (ExecutionException | InterruptedException e) {
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

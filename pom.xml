@@ -7,21 +7,11 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <!-- Library versions -->
-        <junit.version>5.9.2</junit.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
     </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-    </dependencies>
+    <dependencies/>
 
     <build>
     <plugins>
@@ -30,8 +20,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-            <compilerVersion>21</compilerVersion>
-            <release>21</release>
+            <compilerVersion>25</compilerVersion>
+            <release>25</release>
             <compilerArgs>
                 <arg>--enable-preview</arg>
             </compilerArgs>
