@@ -8,7 +8,7 @@ import java.util.concurrent.StructuredTaskScope;
 public class WebServerStructured {
 
     void serve(ServerSocket serverSocket) throws IOException, InterruptedException {
-        try (var scope = new StructuredTaskScope<Void>()) {
+        try (var scope = StructuredTaskScope.open()) {
             try {
                 while (true) {
                     var socket = serverSocket.accept();
@@ -16,7 +16,7 @@ public class WebServerStructured {
                 }
             } finally {
                 // If there's been an error or we're interrupted, we stop accepting
-                scope.shutdown();  // Close all active connections
+                scope.close(); // Close all active connections, try to avoid waiting
                 scope.join();
             }
         }
