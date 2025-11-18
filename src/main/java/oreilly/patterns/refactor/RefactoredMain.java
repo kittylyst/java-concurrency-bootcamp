@@ -10,7 +10,7 @@ public class RefactoredMain {
 
         for (var i = 0; i < 1000; i = i + 1) {
             var item = new Item("item"+ i);
-            Runnable r = () -> em.persist(item);
+            Runnable r = () -> em.persist(item); // Task code
             executor.submit(r);
         }
         executor.shutdown();

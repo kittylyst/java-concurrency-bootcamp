@@ -24,6 +24,7 @@ public class NeedToRefactor implements Closeable, Runnable {
     public void run() {
         while (!shutdown) {
             try {
+                // Need a non-blocking poll
                 var item = tasks.poll(1, TimeUnit.SECONDS);
                 if (item != null) {
                     em.persist(item);

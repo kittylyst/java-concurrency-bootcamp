@@ -8,6 +8,7 @@ public class JUCQueue implements SimpleBoundedQueue {
     private final Lock lock = new ReentrantLock();
     private final Condition notFull  = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
+
     private final Object[] items = new Object[100];
     private int putptr, takeptr, count;
 

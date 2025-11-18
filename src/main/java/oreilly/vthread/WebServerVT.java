@@ -7,17 +7,19 @@ import java.util.concurrent.Executors;
 
 public class WebServerVT {
 
-    void serve(ServerSocket serverSocket) throws IOException, InterruptedException {
+    private volatile boolean running = true;
+
+    void serve(ServerSocket serverSocket) throws IOException {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-            try {
-                while (true) {
-                    var socket = serverSocket.accept();
-                    executor.submit(() -> handle(socket));
-                }
-            } finally {
-                // If there's been an error or we're interrupted, we stop accepting
+            while (running) {
+                var socket = serverSocket.accept();
+                executor.submit(() -> handle(socket));
             }
         }
+    }
+
+    public void stop() {
+        running = false;
     }
 
     private void handle(Socket socket) {

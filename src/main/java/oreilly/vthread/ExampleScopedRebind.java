@@ -17,6 +17,7 @@ public class ExampleScopedRebind implements Runnable {
                 .run(() -> process());
     }
 
+
     private void process() {
         if (!securitySV.isBound()) {
             throw new RuntimeException("ScopedValue not bound - this should not happen");
@@ -43,10 +44,8 @@ public class ExampleScopedRebind implements Runnable {
 
     public static void main(String[] args) throws InterruptedException {
         var example = new ExampleScopedRebind();
-        Thread t1 = new Thread(example);
-        Thread t2 = new Thread(example);
-        t1.start();
-        t2.start();
+        Thread t1 = Thread.ofVirtual().start(example);
+        Thread t2 = Thread.ofVirtual().start(example);
         t1.join();
         t2.join();
         System.out.println("Exiting");

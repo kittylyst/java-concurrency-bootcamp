@@ -1,6 +1,10 @@
 package oreilly.counters;
 
 import oreilly.counters.wk1.*;
+import oreilly.counters.wk2.AtomicCounterUnsafe;
+import oreilly.counters.wk2.AtomicCounterVarHandle;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author ben
@@ -9,17 +13,17 @@ public class CounterMain {
     public static final int REPS = 10_000_000;
 
     public static void main(String[] args) throws InterruptedException {
-        final var c = new HalfSynchronizedCounter();
+        final var c = new AtomicCounterVarHandle();
 
-        Runnable r = () -> {
+        Runnable rA = () -> {
             for (int i = 0; i < REPS; i = i + 1) {
                 c.increment();
             }
         };
 
         // Look in the docs dir for the corresponding bytecode
-        Thread tA = new Thread(r);
-        Thread tB = new Thread(r);
+        Thread tA = new Thread(rA);
+        Thread tB = new Thread(rA);
         long start = System.currentTimeMillis(); // Only main is running
         tA.start();
         tB.start();

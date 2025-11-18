@@ -8,7 +8,7 @@ public class Deadlock {
         Thread t1 = new Thread(() -> {
                 synchronized(a) { // Lightweight lock on a
                     try {
-                        Thread.sleep(1);
+                        Thread.sleep(1); // or yield
                     } catch (InterruptedException e) { }
                     synchronized(b) { compute(); } // Forces b to transition to heavy lock
                 }});
