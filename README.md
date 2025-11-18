@@ -1,8 +1,8 @@
 # java-concurrency-bootcamp
 
-Code examples for "Java Concurrency in 2 Weeks"
+Code examples for "Java Concurrency Bootcamp"
 
-The docs directory contains simplified bytecode representations of some pf the counters examples.
+Requires Java 25, and uses the Preview version of Structured Concurrency from that version.
 
-Requires Java 21, and uses the Preview versions of features (Structured Concurrency, Scoped Values)
-from that version.
+The docs directory contains simplified bytecode representations of some of the counters examples.
+
