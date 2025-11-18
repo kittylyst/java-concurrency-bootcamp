@@ -9,7 +9,7 @@ public class CounterMain {
     public static final int REPS = 10_000_000;
 
     public static void main(String[] args) throws InterruptedException {
-        final var c = new HalfSynchronizedCounter();
+        final var c = new UnprotectedCounter();
 
         Runnable r = () -> {
             for (int i = 0; i < REPS; i = i + 1) {

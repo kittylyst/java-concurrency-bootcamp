@@ -6,14 +6,14 @@ import java.lang.invoke.VarHandle;
 
 public final class AtomicCounterVarHandle implements Counter {
 
-    private static final VarHandle vh;
+    private static final VarHandle vhForValue;
 
     private volatile int value = 0;
 
     static {
         try {
             MethodHandles.Lookup l = MethodHandles.lookup();
-            vh = l.findVarHandle(AtomicCounterVarHandle.class, "value", int.class);
+            vhForValue = l.findVarHandle(AtomicCounterVarHandle.class, "value", int.class);
         } catch (Exception ex) { throw new Error(ex); }
     }
 
@@ -23,7 +23,7 @@ public final class AtomicCounterVarHandle implements Counter {
      * @return the updated value
      */
     public int increment() {
-        return 1 + (int)vh.getAndAdd(this, 1);
+        return 1 + (int) vhForValue.getAndAdd(this, 1);
     }
 
     /**
