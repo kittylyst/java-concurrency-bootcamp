@@ -48,29 +48,4 @@ public class ExampleVTExecutor {
             return new String(in.readAllBytes(), StandardCharsets.UTF_8);
         }
     }
-
-    static <T> List<T> runAll(List<Callable<T>> tasks) {
-        // All forked subtasks must succeed
-        try (var scope = StructuredTaskScope.open(allSuccessfulOrThrow())) {
-            List<StructuredTaskScope.Subtask<T>> handles =
-                    tasks.stream().map(scope::fork).toList();
-
-            // Here, all tasks have succeeded, so compose their results
-            return handles.stream().map(StructuredTaskScope.Subtask::get).toList();
-        }
-    }
-
-    static <T> T race(Collection<Callable<T>> tasks,
-                                       ThreadFactory factory,
-                                       Duration timeout)
-            throws InterruptedException
-    {
-        try (var scope = StructuredTaskScope.open(Joiner.<T>anySuccessfulResultOrThrow(),
-                cf -> cf.withThreadFactory(factory)
-                        .withTimeout(timeout))) {
-            tasks.forEach(scope::fork);
-            return scope.join();
-        }
-    }
-
 }
