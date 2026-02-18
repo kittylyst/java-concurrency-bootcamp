@@ -39,7 +39,7 @@ public class ExampleStructuredCon {
     private static Double getSentiment(String s) {
         try {
             Thread.sleep((int)(100 * Math.random()));
-        } catch (InterruptedException __) {
+        } catch (InterruptedException _) {
         }
         return 2 * Math.random() - 1;
     }
@@ -47,7 +47,7 @@ public class ExampleStructuredCon {
     private static Double getDelta24(String s) {
         try {
             Thread.sleep((int)(100 * Math.random()));
-        } catch (InterruptedException __) {
+        } catch (InterruptedException _) {
         }
         return 100 * (2 * Math.random() - 1);
     }

@@ -18,7 +18,7 @@ public final class AtomicCounterUnsafe implements Counter {
             f.setAccessible(true);
             unsafe = (Unsafe) f.get(null);
             valueOffset = unsafe.objectFieldOffset(AtomicCounterUnsafe.class.getDeclaredField("value"));
-            System.out.println("Offset: "+ valueOffset);
+            IO.println("Offset: "+ valueOffset);
         } catch (Exception ex) { throw new Error(ex); }
     }
 

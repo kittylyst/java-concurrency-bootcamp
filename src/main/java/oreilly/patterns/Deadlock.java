@@ -1,7 +1,7 @@
 package oreilly.patterns;
 
 public class Deadlock {
-    public static void main(String[] args) {
+    void main() {
         Object a = new Object();
         Object b = new Object();
 

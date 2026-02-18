@@ -34,6 +34,4 @@ public class NeedToRefactor implements Closeable, Runnable {
             }
         }
     }
-
-
 }

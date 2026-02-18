@@ -7,7 +7,7 @@ import static oreilly.cf.AsynchPrimeFinder.getNthPrime;
 
 public class PrimeMain {
 
-    public static void main(String[] args) {
+    void main() {
         Future<Long> numF = getNthPrime(10_000);
         var theNum = -1L;
         try {

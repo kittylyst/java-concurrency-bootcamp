@@ -35,6 +35,8 @@ public class SimpleDict implements Map<String, String> {
     public String put(String key, String value) {
         if (key == null)
             return null;
+        if (value == null)
+            throw new IllegalArgumentException("value cannot be null");
 
         int hash = hash(key.hashCode());
         int i = indexFor(hash, table.length);
@@ -49,9 +51,12 @@ public class SimpleDict implements Map<String, String> {
             }
         }
 
+
         // Add new entry
         Node oldHead = table[i];
         table[i] = new Node(hash, key, value, oldHead);
+
+
 
         size = size + 1;
         return null;
