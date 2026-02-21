@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class Shakespeare {
 
-    public static void main(String[] args) {
+    void main() {
         var lines = getLines();
         System.out.println("Total lines: "+ lines.size());
 
@@ -19,7 +19,8 @@ public class Shakespeare {
                         .filter(hasRose)
                         .count();
         var end = System.nanoTime();
-        System.out.println("Lines that talk about roses: "+ total +" ; "+ (end - start));
+        var elapsedMs = (end - start) / 1_000_000;
+        System.out.println("Lines that talk about roses: "+ total +" ; "+ elapsedMs);
     }
 
     private static List<String> getLines() {

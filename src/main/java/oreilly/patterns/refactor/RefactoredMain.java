@@ -1,6 +1,7 @@
 package oreilly.patterns.refactor;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.BlockingQueue;
 
 public class RefactoredMain {
 

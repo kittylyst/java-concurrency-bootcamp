@@ -3,12 +3,12 @@ package oreilly.patterns;
 import java.util.concurrent.CountDownLatch;
 
 public class FailToStart {
-    public static void main(String[] args) throws InterruptedException {
+    void main() throws InterruptedException {
         var cdl = new CountDownLatch(1);
         Runnable r = () -> {
             int i = 0;
             while(true){
-                System.out.println("Thread: "+
+                IO.println("Thread: "+
                         Thread.currentThread() +" "+ i++);
                 if (i > 1000) {
                     cdl.countDown();
@@ -20,8 +20,7 @@ public class FailToStart {
         t.setDaemon(true);
         t.start();
         cdl.await();
-        System.out.println("Done");
-//        t.yield();
+        IO.println("Done");
 //        Thread.sleep(2);
     }
 }

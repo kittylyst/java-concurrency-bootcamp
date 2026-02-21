@@ -4,12 +4,7 @@ import java.util.concurrent.*;
 
 public class ExecutorExamples {
 
-    public static void main(String[] args) {
-        ExecutorExamples ee = new ExecutorExamples();
-        ee.run();
-    }
-
-    private void run() {
+    void main() {
         Runnable r = () -> {
             String name = Thread.currentThread().getName();
             System.out.println("Starting on thread: "+ name);
@@ -18,11 +13,11 @@ public class ExecutorExamples {
             } catch (InterruptedException e) {
                 System.out.println("Interrupted on "+ name);
             }
-            System.out.println("Finished on "+ name);
+            throw new RuntimeException("Throwing");
         };
 
-        ExecutorService ex = Executors.newFixedThreadPool(3);
-//        ExecutorService ex = new ThreadPoolExecutor(3, 60,
+        ExecutorService ex = Executors.newFixedThreadPool(2);
+//        ExecutorService ex = new ThreadPoolExecutor(3, 3,
 //                10L, TimeUnit.SECONDS,
 //                new SynchronousQueue<>());
         ex.execute(r);
