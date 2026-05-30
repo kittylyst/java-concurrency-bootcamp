@@ -4,8 +4,6 @@ import oreilly.counters.wk1.*;
 import oreilly.counters.wk2.AtomicCounterUnsafe;
 import oreilly.counters.wk2.AtomicCounterVarHandle;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * @author ben
  */

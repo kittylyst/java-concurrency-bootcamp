@@ -2,8 +2,8 @@ package oreilly.locks;
 
 import java.util.LinkedList;
 
-public final class WaitingQueue {
-    LinkedList q = new LinkedList<Object>(); // storage
+public final class WaitingQueue implements SimpleBoundedQueue {
+    LinkedList q = new LinkedList<>(); // storage
 
     public synchronized void put(Object o) {
         q.add(o);         // Append the object to the end of the list

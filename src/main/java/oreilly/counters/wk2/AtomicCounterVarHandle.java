@@ -5,15 +5,13 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 
 public final class AtomicCounterVarHandle implements Counter {
-
     private static final VarHandle vhForValue;
-
     private volatile int value = 0;
 
     static {
         try {
-            MethodHandles.Lookup l = MethodHandles.lookup();
-            vhForValue = l.findVarHandle(AtomicCounterVarHandle.class, "value", int.class);
+            var l = MethodHandles.lookup();
+            vhForValue = l.findVarHandle(l.lookupClass(), "value", int.class);
         } catch (Exception ex) { throw new Error(ex); }
     }
 

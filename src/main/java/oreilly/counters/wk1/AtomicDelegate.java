@@ -4,7 +4,7 @@ import oreilly.counters.Counter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicCounter implements Counter  {
+public class AtomicDelegate implements Counter  {
     private final AtomicInteger internal = new AtomicInteger();
 
     @Override
