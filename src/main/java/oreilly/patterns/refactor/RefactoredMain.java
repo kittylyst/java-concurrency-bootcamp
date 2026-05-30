@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class RefactoredMain {
 
-    public static void main(String[] args) {
+    void main() {
         var executor = Executors.newSingleThreadExecutor();
         var em = new EntityManager();
 

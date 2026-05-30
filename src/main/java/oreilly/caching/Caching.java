@@ -29,8 +29,8 @@ public class Caching {
             testData[i] += 1;
     }
 
-    private void touchEveryNth() { // 1/8th of the increments
-        for (int i = 0; i < testData.length; i += 32)
+    private void touchEveryNth() { // 1/8 of the increments
+        for (int i = 0; i < testData.length; i += 8)
             testData[i] += 1;
     }
 

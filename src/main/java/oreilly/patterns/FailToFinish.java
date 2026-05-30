@@ -3,7 +3,7 @@ package oreilly.patterns;
 import java.io.Closeable;
 import java.io.IOException;
 
-public class FailToFinish implements Closeable, Runnable {
+public final class FailToFinish implements Closeable, Runnable {
     private volatile boolean shutdown = false;
 
     @Override

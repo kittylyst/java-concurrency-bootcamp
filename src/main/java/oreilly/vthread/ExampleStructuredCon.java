@@ -1,8 +1,6 @@
 package oreilly.vthread;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.StructuredTaskScope;
 
 import static java.util.concurrent.StructuredTaskScope.Joiner.allSuccessfulOrThrow;
@@ -13,9 +11,9 @@ public class ExampleStructuredCon {
     // and the price change (as a percentage) in last 24 hours
     record StockTip(String symbol, double sentiment, double delta24) {}
 
-    public static void main(String[] args) {
+    void main(String[] args) {
         for (var s : args) {
-            System.out.println(makeStockTip(s));
+            IO.println(makeStockTip(s));
         }
     }
 

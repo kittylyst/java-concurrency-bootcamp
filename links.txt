@@ -1,0 +1,17 @@
+* [**https://kittylyst.com**](https://kittylyst.com)
+* https://developer.ibm.com/articles/j-ffm/
+* [https://openjdk.java.net/jeps/416](https://openjdk.java.net/jeps/416)
+* Nutshell 9 ER - https://learning.oreilly.com/library/view/java-in-a/0642572255992/
+* OCNJ - https://www.amazon.com/Optimizing-Cloud-Native-Java-Application/dp/1098149343
+* WGJD2 - https://www.manning.com/books/the-well-grounded-java-developer-second-edition
+
+https://kittylyst.com
+https://developer.ibm.com/articles/j-ffm/
+
+https://openjdk.java.net/jeps/416
+
+https://learning.oreilly.com/library/view/java-in-a/0642572255992/
+
+https://www.amazon.com/Optimizing-Cloud-Native-Java-Application/dp/1098149343
+
+https://www.manning.com/books/the-well-grounded-java-developer-second-edition

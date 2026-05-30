@@ -15,12 +15,20 @@ public class Shakespeare {
 
         var hasRose = Pattern.compile("rose", Pattern.CASE_INSENSITIVE).asPredicate();
         var start = System.nanoTime();
-        var total = lines.parallelStream()
+        var total = lines.stream()
                         .filter(hasRose)
                         .count();
         var end = System.nanoTime();
         var elapsedMs = (end - start) / 1_000_000;
-        System.out.println("Lines that talk about roses: "+ total +" ; "+ elapsedMs);
+        IO.println("Lines that talk about roses: "+ total +" ; Serial: "+ elapsedMs +"ms");
+
+        start = System.nanoTime();
+        total = lines.stream()
+                .filter(hasRose)
+                .count();
+        end = System.nanoTime();
+        elapsedMs = (end - start) / 1_000_000;
+        IO.println("Lines that talk about roses: "+ total +" ; Parallel: "+ elapsedMs +"ms");
     }
 
     private static List<String> getLines() {

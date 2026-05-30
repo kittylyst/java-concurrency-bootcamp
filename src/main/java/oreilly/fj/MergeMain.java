@@ -8,8 +8,10 @@ import java.util.stream.IntStream;
 
 public class MergeMain {
 
-    public static void main(String[] args) {
-        var numbers = shuffleFY(IntStream.range(1, 8192).toArray());
+    private static final int RANGE_MAX = 16 * 8192;
+
+    void main() {
+        var numbers = shuffleFY(IntStream.range(1, RANGE_MAX).toArray());
         System.out.println(Arrays.toString(numbers));
 
         var pool = new ForkJoinPool();

@@ -6,11 +6,13 @@ import java.net.Socket;
 
 public class WebServerScoped {
 
+    private volatile boolean running = true;
+
     // Dynamic or implicit scope
     private static final ScopedValue<Socket> socketSV = ScopedValue.newInstance();
 
     void serve(ServerSocket serverSocket) throws IOException {
-        while (true) {
+        while (running) {
             var socket = serverSocket.accept();
             ScopedValue.where(socketSV, socket)
                 .run(() -> handle());
@@ -22,7 +24,7 @@ public class WebServerScoped {
         // handle incoming traffic
     }
 
-    public static void main(String[] args) {
-
+    public void shutdown() {
+        running = false;
     }
 }

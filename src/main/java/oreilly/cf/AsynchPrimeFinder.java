@@ -9,8 +9,8 @@ public class AsynchPrimeFinder {
     private AsynchPrimeFinder() {}
 
     public static CompletableFuture<Long> getNthPrime(int n) {
-//        final var nthF = new CompletableFuture<Long>();
-//
+        final var nthF = new CompletableFuture<Long>();
+
 //        new Thread( () -> {
 //            Long num = Eratosthenes.findPrime(n);
 //            nthF.complete(num);

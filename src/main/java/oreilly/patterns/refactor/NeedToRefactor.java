@@ -4,7 +4,7 @@ import java.io.Closeable;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public class NeedToRefactor implements Closeable, Runnable {
+public final class NeedToRefactor implements Closeable, Runnable {
 
     private final BlockingQueue<Item> tasks;
     private volatile boolean shutdown = false;
@@ -29,7 +29,7 @@ public class NeedToRefactor implements Closeable, Runnable {
                 if (item != null) {
                     em.persist(item);
                 }
-            } catch (InterruptedException e) {
+            } catch (InterruptedException _) {
                 shutdown = true;
             }
         }
