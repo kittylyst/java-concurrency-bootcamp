@@ -18,13 +18,13 @@ public class LatchExample implements Runnable {
             throw new RuntimeException(e);
         }
 
-        System.out.println(System.currentTimeMillis() +": "+ Thread.currentThread().getName() + " Done API Call");
+        IO.println(System.currentTimeMillis() +": "+ Thread.currentThread().getName() + " Done API Call");
         try {
             latch.countDown();
             latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(System.currentTimeMillis() +": "+Thread.currentThread().getName() + " Continue processing");
+        IO.println(System.currentTimeMillis() +": "+Thread.currentThread().getName() + " Continue processing");
     }
 }

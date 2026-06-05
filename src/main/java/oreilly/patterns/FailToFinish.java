@@ -4,7 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 
 public final class FailToFinish implements Closeable, Runnable {
-    private volatile boolean shutdown = false;
+    private boolean shutdown = false;
 
     @Override
     public void close() {

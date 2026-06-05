@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class JUCQueue implements SimpleBoundedQueue {
+public class JUCQueue implements SimpleQueue {
     private final Lock lock = new ReentrantLock();
     private final Condition notFull  = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();

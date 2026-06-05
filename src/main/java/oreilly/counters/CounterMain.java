@@ -1,8 +1,7 @@
 package oreilly.counters;
 
-import oreilly.counters.wk1.*;
-import oreilly.counters.wk2.AtomicCounterUnsafe;
-import oreilly.counters.wk2.AtomicCounterVarHandle;
+
+import oreilly.counters.day1.UnprotectedCounter;
 
 /**
  * @author ben
@@ -11,7 +10,7 @@ public class CounterMain {
     public static final int REPS = 10_000_000;
 
     void main() throws InterruptedException {
-        final var c = new AtomicCounterVarHandle();
+        final var c = new UnprotectedCounter();
 
         Runnable r = () -> {
             for (int i = 0; i < REPS; i = i + 1) {
@@ -30,8 +29,8 @@ public class CounterMain {
         tB.join(); // main waits for tB to exit
         long fin = System.currentTimeMillis(); // One thread is left
         int lost = 2 * REPS - c.get();
-        System.out.println("Lost Updates: " + lost); // Only concurrently-safe iff lost == 0
-        System.out.println("Elapsed: " + (fin - start));
+        IO.println("Lost Updates: " + lost); // Only concurrently-safe iff lost == 0
+        IO.println("Elapsed: " + (fin - start));
     }
 
 }

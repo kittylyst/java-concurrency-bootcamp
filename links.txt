@@ -8,6 +8,8 @@
 https://kittylyst.com
 https://developer.ibm.com/articles/j-ffm/
 
+https://pages.cs.wisc.edu/~remzi/OSTEP/
+
 https://openjdk.java.net/jeps/416
 
 https://learning.oreilly.com/library/view/java-in-a/0642572255992/

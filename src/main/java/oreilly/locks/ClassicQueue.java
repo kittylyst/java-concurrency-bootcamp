@@ -1,6 +1,6 @@
 package oreilly.locks;
 
-public class ClassicQueue implements SimpleBoundedQueue {
+public class ClassicQueue implements SimpleQueue {
 
     private final Object[] items = new Object[100];
     private int putptr, takeptr, count;

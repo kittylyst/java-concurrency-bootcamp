@@ -3,14 +3,14 @@ package oreilly.locks;
 public class QueueMain {
 
     void main() {
-        SimpleBoundedQueue q = new WaitingQueue();
-//        SimpleBoundedQueue q = new ClassicQueue();
-//        SimpleBoundedQueue q = new JUCQueue();
+        SimpleQueue q = new WaitingQueue();
+//        SimpleQueue q = new ClassicQueue();
+//        SimpleQueue q = new JUCQueue();
         Runnable source = () -> {
             for (var i = 0; i < 5000; i += 1) {
                 try {
                     q.put("Item"+ i);
-                } catch (InterruptedException __) {
+                } catch (InterruptedException _) {
                 }
             }
         };
@@ -19,8 +19,8 @@ public class QueueMain {
             for (var i = 0; i < 5000; i += 1) {
                 try {
                     Object o = q.take();
-                    System.out.println("Collected: "+ o);
-                } catch (InterruptedException __) {
+                    IO.println("Collected: "+ o);
+                } catch (InterruptedException _) {
                 }
             }
         };

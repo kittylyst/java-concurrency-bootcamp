@@ -8,7 +8,7 @@ public class FailToFinishMain {
             t = new Thread(f2f);
             t.start();
             Thread.sleep(500);
-        }
+        } // f2f.close() is called from the main thread
         t.join();
     }
 

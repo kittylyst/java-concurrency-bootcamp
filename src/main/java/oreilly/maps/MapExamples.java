@@ -2,11 +2,12 @@ package oreilly.maps;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapExamples {
     public static void main(String[] args) {
-        int SIZE = 100_000;
-        Map<String, String> map = new HashMap<>(SIZE);
+        int SIZE = 100_000_000;
+        Map<String, String> map = new SimpleDict();
 
         Runnable r1 = () -> {
           for (int i = 0; i < SIZE; i = i + 1) {
