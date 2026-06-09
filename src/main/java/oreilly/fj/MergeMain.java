@@ -12,15 +12,15 @@ public class MergeMain {
 
     void main() {
         var numbers = shuffleFY(IntStream.range(1, RANGE_MAX).toArray());
-        System.out.println(Arrays.toString(numbers));
+        IO.println(Arrays.toString(numbers));
 
         var pool = new ForkJoinPool();
         ForkJoinTask<Void> job =
                 pool.submit(new MergeSortTask(numbers, 0, numbers.length));
 
-        System.out.println("Waiting");
+        IO.println("Waiting");
         job.join();
-        System.out.println(Arrays.toString(numbers));
+        IO.println(Arrays.toString(numbers));
     }
 
     static int[] shuffleFY(int[] inPlace) {

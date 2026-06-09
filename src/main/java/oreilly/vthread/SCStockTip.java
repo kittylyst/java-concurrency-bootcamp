@@ -5,7 +5,7 @@ import java.util.concurrent.StructuredTaskScope;
 
 import static java.util.concurrent.StructuredTaskScope.Joiner.allSuccessfulOrThrow;
 
-public class ExampleStructuredCon {
+public final class SCStockTip {
 
     // A triple consisting of a symbol, its social media sentiment score (-1.0 to +1.0)
     // and the price change (as a percentage) in last 24 hours

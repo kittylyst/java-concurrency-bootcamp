@@ -1,8 +1,6 @@
 package oreilly.locks;
 
-import java.util.Queue;
-
-public interface SimpleBoundedQueue {
+public interface SimpleQueue {
     void put(Object x) throws InterruptedException;
     Object take() throws InterruptedException;
 }

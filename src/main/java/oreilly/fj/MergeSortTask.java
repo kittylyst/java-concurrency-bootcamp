@@ -20,6 +20,7 @@ public final class MergeSortTask extends RecursiveAction {
             Arrays.sort(array, low, high);
         } else {
             int middle = low + ((high - low) >> 1);
+            IO.println("About to recurse around: "+ middle);
             // Execute the subtasks and wait for them to finish
             invokeAll(new MergeSortTask(array, low, middle),
                     new MergeSortTask(array, middle, high));

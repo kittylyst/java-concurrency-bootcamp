@@ -1,4 +1,4 @@
-package oreilly.counters.wk1;
+package oreilly.counters.day1;
 
 import oreilly.counters.Counter;
 
@@ -16,6 +16,8 @@ public final class SynchronizedCounter implements Counter {
         }
         return i;
     }
+
+    // public synchronized int increment() { ... }
 
     public synchronized int get() {
         return i;

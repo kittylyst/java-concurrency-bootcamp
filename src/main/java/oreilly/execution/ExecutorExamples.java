@@ -13,13 +13,10 @@ public class ExecutorExamples {
             } catch (InterruptedException e) {
                 System.out.println("Interrupted on "+ name);
             }
-            throw new RuntimeException("Throwing");
         };
 
         ExecutorService ex = Executors.newFixedThreadPool(2);
-//        ExecutorService ex = new ThreadPoolExecutor(3, 3,
-//                10L, TimeUnit.SECONDS,
-//                new SynchronousQueue<>());
+
         ex.execute(r);
         ex.execute(r);
         ex.execute(r);

@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.Spliterator;
 
 public class Shakespeare {
 
     void main() {
-        var lines = getLines();
+        var text = getLines();
+        var lines = new ArrayList<String>();
+        lines.addAll(text);
+
         System.out.println("Total lines: "+ lines.size());
 
         var hasRose = Pattern.compile("rose", Pattern.CASE_INSENSITIVE).asPredicate();
@@ -22,13 +27,13 @@ public class Shakespeare {
         var elapsedMs = (end - start) / 1_000_000;
         IO.println("Lines that talk about roses: "+ total +" ; Serial: "+ elapsedMs +"ms");
 
-        start = System.nanoTime();
-        total = lines.stream()
-                .filter(hasRose)
-                .count();
-        end = System.nanoTime();
-        elapsedMs = (end - start) / 1_000_000;
-        IO.println("Lines that talk about roses: "+ total +" ; Parallel: "+ elapsedMs +"ms");
+//        start = System.nanoTime();
+//        total = lines.parallelStream()
+//                .filter(hasRose)
+//                .count();
+//        end = System.nanoTime();
+//        elapsedMs = (end - start) / 1_000_000;
+//        IO.println("Lines that talk about roses: "+ total +" ; Parallel: "+ elapsedMs +"ms");
     }
 
     private static List<String> getLines() {

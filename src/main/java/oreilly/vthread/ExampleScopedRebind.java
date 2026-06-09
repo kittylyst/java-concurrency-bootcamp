@@ -24,10 +24,10 @@ public class ExampleScopedRebind implements Runnable {
 
         var level = securitySV.get();
         if (level == SecurityLevel.USER) {
-            System.out.println("User privileges granted for "+ requestSV.get() +" on: "+ Thread.currentThread());
+            IO.println("User privileges granted for "+ requestSV.get() +" on: "+ Thread.currentThread());
         } else {
-            System.out.println("Admin privileges requested for "+ requestSV.get() +" on: "+ Thread.currentThread());
-            System.out.println("System is in lockdown. Falling back to user privileges");
+            IO.println("Admin privileges requested for "+ requestSV.get() +" on: "+ Thread.currentThread());
+            IO.println("System is in lockdown. Falling back to user privileges");
             ScopedValue.where(securitySV, SecurityLevel.USER)
                     .run(() -> process());
         }

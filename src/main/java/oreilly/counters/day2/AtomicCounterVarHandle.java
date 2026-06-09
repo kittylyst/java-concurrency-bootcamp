@@ -1,4 +1,4 @@
-package oreilly.counters.wk2;
+package oreilly.counters.day2;
 
 import oreilly.counters.Counter;
 import java.lang.invoke.MethodHandles;

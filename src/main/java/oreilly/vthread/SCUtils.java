@@ -9,8 +9,8 @@ import java.util.concurrent.ThreadFactory;
 
 import static java.util.concurrent.StructuredTaskScope.Joiner.allSuccessfulOrThrow;
 
-public final class ExamplesStructured {
-    private ExamplesStructured() {}
+public final class SCUtils {
+    private SCUtils() {}
 
     static <T> List<T> runAll(List<Callable<T>> tasks) {
         // All forked subtasks must succeed

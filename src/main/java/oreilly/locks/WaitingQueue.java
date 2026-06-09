@@ -2,7 +2,7 @@ package oreilly.locks;
 
 import java.util.LinkedList;
 
-public final class WaitingQueue implements SimpleBoundedQueue {
+public final class WaitingQueue implements SimpleQueue {
     LinkedList q = new LinkedList<>(); // storage
 
     public synchronized void put(Object o) {
@@ -11,10 +11,10 @@ public final class WaitingQueue implements SimpleBoundedQueue {
     }
 
     public synchronized Object take() {
-        while(q.size() == 0) {
+        while (q.size() == 0) { // Empty condition
             try { this.wait(); }
-            catch (InterruptedException ignore) {}
+            catch (InterruptedException _) {}
         }
-        return q.remove(); // Return the head of the queue
+        return q.get(q.size() - 1); // Return the head of the queue
     }
 }

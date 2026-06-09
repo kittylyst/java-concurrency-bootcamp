@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.concurrent.*;
 
-public class ExampleVTExecutor {
+public class ExampleVTWebFetch {
 
     void main(String[] args) {
         handle(Arrays.stream(args).map(s -> {
@@ -30,7 +30,7 @@ public class ExampleVTExecutor {
             for (var f : fs) {
                 sb.append(f.get());
             }
-            System.out.println(sb);
+            IO.println(sb);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }

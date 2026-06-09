@@ -10,17 +10,18 @@ public class CFMain {
 
     void main() throws ExecutionException, InterruptedException {
         final CompletableFuture<Long> numF = getNthPrime(10_000); // pthread1
+        IO.println(numF.isDone());
         IO.println(numF.get()); // block on main
 
         try {
-            Thread.sleep(3000); // main
+            Thread.sleep(1000); // main
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
         // l -> l+2 performed on thread used for original async task
-        final var num2 = numF.thenApply(l -> {
-            IO.println("getNthPrime " + l);
+        var num2 = numF.thenApply(l -> {
+            IO.println(Thread.currentThread().getName() + ": thenApply() " + l);
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -31,7 +32,10 @@ public class CFMain {
 
 
 //        // when numF completes,       vvvvvvv separate async task
-        final var num3 = num2.thenCompose(l -> CompletableFuture.supplyAsync(() -> l * 3)); // pthread3
+        final var num3 = num2.thenCompose(l -> CompletableFuture.supplyAsync(() -> {
+            IO.println(Thread.currentThread().getName() + ": thenCompose()");
+            return l * 3;
+        })); // pthread3
         Consumer<Long> cL = l -> IO.println("In lambda: "+ l);
         CompletableFuture<Void> numV = num3.thenAccept(cL); // main
         numV.join();

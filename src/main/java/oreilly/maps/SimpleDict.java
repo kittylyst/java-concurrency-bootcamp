@@ -51,12 +51,9 @@ public class SimpleDict implements Map<String, String> {
             }
         }
 
-
         // Add new entry
         Node oldHead = table[i];
         table[i] = new Node(hash, key, value, oldHead);
-
-
 
         size = size + 1;
         return null;
